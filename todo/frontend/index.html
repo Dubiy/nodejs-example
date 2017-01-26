@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/todo.js"></script>
+    <title>Todo list</title>
+</head>
+<body>
+    <div class="container todo-app" >
+        <div class="row col-sm-6 col-sm-offset-3">
+
+            <div class="page-header">
+                <h1>2do list</h1>
+            </div>
+
+
+            <ul class="nav nav-pills taskFilters">
+                <li role="presentation" data-filter="all" class="filterAll active"><a href="#">All <span class="badge">5</span></a></li>
+                <li role="presentation" data-filter="done" class="filterDone"><a href="#">Done <span class="badge">2</span></a></li>
+                <a href="#" id="add-task" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add</a>
+            </ul>
+
+            <ul class="list-group" id="todo-list-view">
+                <li class="list-group-item"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> ...loading... </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Task</h4>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="task-title" class="control-label">Task:</label>
+                            <input type="text" class="form-control" required="required" id="task-title">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <!--Submit</button>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

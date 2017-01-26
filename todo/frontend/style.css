@@ -1,0 +1,17 @@
+.todo-app {
+    padding-top: 40px;
+}
+
+.nav.nav-pills {
+    margin-bottom: 15px;
+}
+
+#todo-list-view .list-group-item.done {
+    background-color: rgba(0,0,0,0.05);
+}
+
+#todo-list-view .list-group-item.done .data {
+    text-decoration: line-through;
+}
+
+/*} .list-group-item.done .data {*/
