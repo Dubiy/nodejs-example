@@ -1,6 +1,8 @@
 'use strict';
 
-const app = require('express')(),
+const
+    express = require('express'),
+    app = express(),
     bodyParser = require('body-parser'),
     config = require('./config'),
 
@@ -14,22 +16,8 @@ app.listen(config.port, config.ip, () => {
 
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/frontend/index.html');
-});
-
-app.get('/todo.js', function (req, res) {
-    res.sendFile(__dirname + '/frontend/todo.js');
-});
-
-app.get('/style.css', function (req, res) {
-    res.sendFile(__dirname + '/frontend/style.css');
-});
-
-
-
 app.use('/api/v1', task);
-
+app.use(express.static(__dirname + '/frontend/'));
 
 // error handling
 app.use((req, res, next) => {
