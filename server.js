@@ -5,8 +5,11 @@ const
     app = express(),
     bodyParser = require('body-parser'),
     config = require('./config'),
-
+    http = require('http').Server(app),
     task = require('./tasks/task');
+
+
+
 
 require('./db');
 
