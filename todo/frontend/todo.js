@@ -4,7 +4,43 @@ var listData = [], list, modal, mode, filter, currentTask;
 
 jQuery(function ($) {
     modal = $('#exampleModal');
-    list = $('#todo-list-view').click(function (event) {
+    list = $('#todo-list-view')
+        .sortable({
+            start: function(e, ui) {
+                // creates a temporary attribute on the element with the old index
+                $(this).attr('data-previndex', ui.item.index());
+            },
+            update: function(e, ui) {
+                var newIndex = ui.item.index();
+                var oldIndex = $(this).attr('data-previndex');
+                $(this).removeAttr('data-previndex');
+
+                var itemId = ui.item.data('id');
+                var moveToId = list.find('li:eq(' + (newIndex + (newIndex < oldIndex ? 1 : -1)) + ')').data('id')
+
+                console.log('/api/v1/tasks/move/' + itemId + '/to/' + moveToId);
+
+                $.ajax({
+                    url: '/api/v1/tasks/move/' + itemId + '/to/' + moveToId,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        "task": currentTask
+                    }),
+                    dataType: 'json',
+                    success: function(data){
+                        console.log('move response', data);
+                    },
+                    error: function(data){
+                        alert('Error occurred :(');
+                        console.log('error', data);
+                    },
+                    processData: false
+                });
+            }
+        })
+        .disableSelection()
+        .click(function (event) {
         var btn = $(event.target);
         var taskId = btn.closest('li').data('id');
         if (!btn.hasClass('btn')) {
@@ -153,7 +189,7 @@ jQuery(function ($) {
 
     function addTask(task) {
         list.append('<li class="list-group-item ' + (task.done ? 'done' : '') + '" data-id="' + task._id + '">' +
-                        '<span class="data">' + task.title + '<span>' +
+                        '<span class="data">' + task.title + ' [' + task.position + ']<span>' +
                         '<span class="pull-right btn-group">' +
                             '<span class="btn btn-success btn-xs glyphicon glyphicon-ok"></span>' +
                             '<span class="btn btn-warning btn-xs glyphicon glyphicon-edit"></span>' +
