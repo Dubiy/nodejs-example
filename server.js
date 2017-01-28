@@ -10,9 +10,10 @@ const
 
 require('./db');
 
-app.listen(config.port, config.ip, () => {
-    console.log(`Server running at ${config.ip}:${config.port}`);
+http.listen(process.env.PORT || config.port, function() {
+    console.log('Listening on:' + (process.env.PORT || config.port));
 });
+
 
 app.use(bodyParser.json());
 
