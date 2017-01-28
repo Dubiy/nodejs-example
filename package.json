@@ -1,19 +1,13 @@
 {
-  "name": "node_servers",
+  "name": "mongo todo",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --debug express/app.js"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "jquery": "^3.1.1",
-    "mongoose": "^4.7.6",
-    "socket.io": "^1.7.2"
+    "mongoose": "^4.7.6"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

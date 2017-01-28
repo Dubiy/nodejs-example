@@ -1,10 +1,12 @@
 'use strict';
 
-const app = require('express')(),
+const
+    express = require('express'),
+    app = express(),
     bodyParser = require('body-parser'),
     config = require('./config'),
 
-    food = require('./foods/food');
+    task = require('./tasks/task');
 
 require('./db');
 
@@ -14,9 +16,8 @@ app.listen(config.port, config.ip, () => {
 
 app.use(bodyParser.json());
 
-
-app.use('/api/v1', food);
-
+app.use('/api/v1', task);
+app.use(express.static(__dirname + '/static/'));
 
 // error handling
 app.use((req, res, next) => {
