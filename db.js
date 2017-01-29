@@ -3,7 +3,13 @@
 const mongoose = require('mongoose'),
     config = require('./config');
 
-mongoose.connect(config.mongoUrl, err => {
+var uriString =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    config.mongoUrl;
+
+
+mongoose.connect(uriString, err => {
     if (err) throw err;
 });
 
