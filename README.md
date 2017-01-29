@@ -1,21 +1,10 @@
-# NodeJS servers
+# 2do node.js
 
-## Simple
+## Run
 
-    node simple/server.js
+    node server.js
 
-## Express
+## Heroku mongodb
 
-    npm start
+    heroku config:set MONGOLAB_URI=mongodb://_username_:_password_@ds135029.mlab.com:35029/todos
 
-## Socket
-
-    node socket/socketio.js
-    
-## Tags
-    
-    node tags/app.js
-    
-## Todo
-
-    node todo/server.js
