@@ -8,9 +8,6 @@ const
     http = require('http').Server(app),
     task = require('./tasks/task');
 
-
-
-
 require('./db');
 
 http.listen(process.env.PORT || config.port, function() {
